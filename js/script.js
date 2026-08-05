@@ -30,6 +30,14 @@ if (loader){
     }, 500);
 });
 
+window.addEventListener('pageshow', function (event){
+    if(event.persisted){
+        loader.style.display = 'none';
+        loader.style.opacity = '0';
+        loader.style.pointerEvents = 'auto';
+    }
+});
+
 document.querySelectorAll('a, button[data-href]').forEach(function (link){
     link.addEventListener('click', function(e){
         const destination = this.tagName === 'A' ? this.href : this.dataset.href;
